@@ -1,12 +1,14 @@
-<h3>First component (See BorderComponent)</h3>
+<h3>BorderComponent</h3>
 
-
-<div class="{{ ( first | async) > 0 ? 'positive' : 'negative' }}">
+<div class="{{ (first | async) | positivity }}" id="first">
   First value: {{ (first | async) }}
 </div>
 
-<div class="{{ ( second | async) > 0 ? 'positive' : 'negative' }}">
+<div class="{{ (second | async) | positivity }}" id="second">
   Second value: {{ (second | async) }}
 </div>
 
-<app-value [first]="first" [second]="second"></app-value>
+<app-value 
+  [first]="first" 
+  [second]="second">
+</app-value>

@@ -8,7 +8,9 @@ describe('ValueComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ValueComponent ]
+      declarations: [ 
+        ValueComponent
+      ]
     })
     .compileComponents();
   }));
@@ -19,7 +21,13 @@ describe('ValueComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create component', () => {
     expect(component).toBeTruthy();
   });
+
+  it(`should have as title 'BorderComponent'`, () => {
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('h3').textContent).toContain('ValueComponent');
+  });
+
 });
