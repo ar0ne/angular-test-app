@@ -1,0 +1,14 @@
+<h2>First component</h2>
+
+
+<div>
+  First value: {{ (first | async) }}
+</div>
+
+<div>
+  Second value: {{ (second | async) }}
+</div>
+
+<div>
+  Last Update: {{ (lastUpdate | async) | date:'mediumTime' }}
+</div>
