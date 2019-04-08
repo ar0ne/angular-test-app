@@ -1,0 +1,11 @@
+
+.positive {
+    border-color: blue;
+    border-style: solid;
+}
+
+.negative {
+    border-color: red;
+    border-style: solid;
+}
+

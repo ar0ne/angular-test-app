@@ -1,14 +1,14 @@
 <h2>First component</h2>
 
 
-<div>
+<div class="{{ ( first | async) > 0 ? 'positive' : 'negative' }}">
   First value: {{ (first | async) }}
 </div>
 
-<div>
+<div class="{{ ( second | async) > 0 ? 'positive' : 'negative' }}">
   Second value: {{ (second | async) }}
 </div>
 
 <div>
-  Last Update: {{ (lastUpdate | async) | date:'mediumTime' }}
+  Last Update: {{ (lastUpdate | async) | date: 'mediumTime' }}
 </div>

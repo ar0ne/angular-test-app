@@ -1,6 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { NgRedux, select } from '@angular-redux/store';
-import { IAppState } from '../store';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-border',
@@ -9,13 +7,11 @@ import { IAppState } from '../store';
 })
 export class BorderComponent implements OnInit {
 
-  @select() first;
-  @select() second;
-  @select() lastUpdate;
-
-  constructor(
-    private ngRedux: NgRedux<IAppState>,
-  ) { }
+  @Input() first: number;
+  @Input() second: number;
+  @Input() lastUpdate: Date;
+  
+  constructor() { }
 
   ngOnInit() {
   }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IAppState } from '../store';
-import { NgRedux } from '@angular-redux/store';
+import { NgRedux, select } from '@angular-redux/store';
 import { CHANGE, INCREASE, DECREASE, RESET } from '../actions';
 import { timer, Subscription } from 'rxjs';
 
@@ -13,6 +13,10 @@ export class ManagerComponent implements OnInit {
 
   private readonly sourceTimer = timer(1000, 1000);
   timerSubsriber: Subscription;
+
+  @select() first;
+  @select() second;
+  @select() lastUpdate;
 
   constructor(
     private ngRedux: NgRedux<IAppState>
@@ -35,13 +39,9 @@ export class ManagerComponent implements OnInit {
   }
 
   reset(): void {
-    if (this.timerSubsriber) {
-      this.timerSubsriber.unsubscribe();
-    }
     this.ngRedux.dispatch({
       type: RESET,
     })
-    this.startTimer();
   }
 
   private startTimer(): void {
