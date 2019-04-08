@@ -1,4 +1,4 @@
-import { CHANGE, INCREASE, DECREASE } from './actions';
+import { CHANGE, INCREASE, DECREASE, RESET } from './actions';
 
 export interface IAppState {
     lastUpdate: Date;
@@ -30,6 +30,8 @@ export function rootReducer(state: IAppState, action): IAppState {
                 second: state.second - 1,
                 lastUpdate: new Date()
             })
+        case RESET:
+            return Object.assign({}, INITIAL_STATE);
         }
 
     return state;

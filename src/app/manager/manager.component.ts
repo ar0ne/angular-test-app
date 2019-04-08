@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { IAppState } from '../store';
 import { NgRedux } from '@angular-redux/store';
-import { CHANGE, INCREASE, DECREASE } from '../actions';
+import { CHANGE, INCREASE, DECREASE, RESET } from '../actions';
 import { timer, Subscription } from 'rxjs';
 
 @Component({
@@ -11,7 +11,8 @@ import { timer, Subscription } from 'rxjs';
 })
 export class ManagerComponent implements OnInit {
 
-  timer: Subscription;
+  private readonly sourceTimer = timer(1000, 1000);
+  timerSubsriber: Subscription;
 
   constructor(
     private ngRedux: NgRedux<IAppState>
@@ -24,21 +25,37 @@ export class ManagerComponent implements OnInit {
     this.ngRedux.dispatch({
       type: CHANGE, 
     });
-    this.oberserableTimer();
+    this.startTimer();
   }
 
+  stop(): void {
+    if (this.timerSubsriber) {
+      this.timerSubsriber.unsubscribe();
+    }
+  }
 
-  oberserableTimer() {
-    const source = timer(1000, 1000);
-    this.timer = source.subscribe(val => {
+  reset(): void {
+    if (this.timerSubsriber) {
+      this.timerSubsriber.unsubscribe();
+    }
+    this.ngRedux.dispatch({
+      type: RESET,
+    })
+    this.startTimer();
+  }
+
+  private startTimer(): void {
+    this.timerSubsriber = this.sourceTimer.subscribe(val => {
       this.ngRedux.dispatch({
         type: INCREASE
       });
       this.ngRedux.dispatch({
         type: DECREASE
-      })
+      });
+      this.ngRedux.dispatch({
+        type: DECREASE
+      });
     });
-    
   }
 
 }
