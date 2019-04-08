@@ -2,10 +2,12 @@
 .positive {
     border-color: blue;
     border-style: solid;
+    color: blue;
 }
 
 .negative {
     border-color: red;
     border-style: solid;
+    color: red;
 }
 

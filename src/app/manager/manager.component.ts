@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { IAppState } from '../store';
 import { NgRedux, select } from '@angular-redux/store';
 import { CHANGE, INCREASE, DECREASE, RESET } from '../actions';
@@ -9,7 +9,7 @@ import { timer, Subscription } from 'rxjs';
   templateUrl: './manager.component.html',
   styleUrls: ['./manager.component.css']
 })
-export class ManagerComponent implements OnInit {
+export class ManagerComponent implements OnInit, OnDestroy  {
 
   private readonly sourceTimer = timer(1000, 1000);
   timerSubsriber: Subscription;
@@ -25,7 +25,12 @@ export class ManagerComponent implements OnInit {
   ngOnInit() {
   }
 
+  ngOnDestroy() { this.stop(); }
+
   start(): void {
+    if (this.timerSubsriber) {
+      return;
+    }
     this.ngRedux.dispatch({
       type: CHANGE, 
     });

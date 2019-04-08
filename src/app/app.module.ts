@@ -14,14 +14,15 @@ import { ManagerComponent } from './manager/manager.component';
     AppComponent,
     BorderComponent,
     ValueComponent,
-    ManagerComponent
+    ManagerComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgReduxModule,
   ],
-  providers: [],
+  providers: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { 

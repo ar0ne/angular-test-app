@@ -1,16 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { IAppState } from '../store';
-import { NgRedux, select } from '@angular-redux/store';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-value',
   templateUrl: './value.component.html',
-  styleUrls: ['./value.component.css']
+  styleUrls: ['./value.component.css'],
 })
 export class ValueComponent implements OnInit {
 
+  @Input() first: number;
+  @Input() second: number;
+
   constructor(
-    private ngRedux: NgRedux<IAppState>,
   ) { }
 
   ngOnInit() {

@@ -1,4 +1,4 @@
-<h2>First component</h2>
+<h3>First component (See BorderComponent)</h3>
 
 
 <div class="{{ ( first | async) > 0 ? 'positive' : 'negative' }}">
@@ -9,6 +9,4 @@
   Second value: {{ (second | async) }}
 </div>
 
-<div>
-  Last Update: {{ (lastUpdate | async) | date: 'mediumTime' }}
-</div>
+<app-value [first]="first" [second]="second"></app-value>

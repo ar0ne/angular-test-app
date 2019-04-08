@@ -1,7 +1,6 @@
 import { CHANGE, INCREASE, DECREASE, RESET } from './actions';
 
 export interface IAppState {
-    lastUpdate: Date;
     first: number;
     second: number;
 }
@@ -9,27 +8,22 @@ export interface IAppState {
 export const INITIAL_STATE: IAppState = {
     first: -5,
     second: 10,
-    lastUpdate: null
 }
 
 export function rootReducer(state: IAppState, action): IAppState {
     switch (action.type) {
         case CHANGE:
-            return Object.assign({}, state, {
-                lastUpdate: new Date()
-            });
+            return Object.assign({}, state);
         
         case INCREASE:
             return Object.assign({}, state, {
-                first: state.first + 1,
-                lastUpdate: new Date()
-            })
+                first: state.first + 1
+            });
             
         case DECREASE:
             return Object.assign({}, state, {
-                second: state.second - 1,
-                lastUpdate: new Date()
-            })
+                second: state.second - 1
+            });
         case RESET:
             return Object.assign({}, INITIAL_STATE);
         }
