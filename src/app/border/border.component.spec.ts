@@ -5,7 +5,7 @@ import { ValueComponent } from '../value/value.component';
 import { By } from '@angular/platform-browser';
 import 'zone.js/dist/zone-testing';
 import { Observable } from 'rxjs';
-import { PositivityPipe } from './positivity.pipe';
+import { SignPipe } from './sign.pipe';
 
 describe('BorderComponent', () => {
   let component: BorderComponent;
@@ -16,7 +16,7 @@ describe('BorderComponent', () => {
       declarations: [ 
         BorderComponent,
         ValueComponent,
-        PositivityPipe,
+        SignPipe,
       ]
     })
     .compileComponents();
@@ -55,12 +55,10 @@ describe('BorderComponent', () => {
     component.first = new Observable(ob => {ob.next(firstValue)});
     component.second = new Observable(ob => {ob.next(secondValue)});
 
-    fixture.detectChanges();
-
     fixture.whenStable().then(() => {
       fixture.detectChanges();
-      expect(firstDivEl.nativeElement.textContent.trim()).toBe(`First value: ${firstValue}`);
-      expect(secondDivEl.nativeElement.textContent.trim()).toBe(`Second value: ${secondValue}`);
+      expect(firstDivEl.nativeElement.textContent.trim()).toContain(firstValue);
+      expect(secondDivEl.nativeElement.textContent.trim()).toContain(secondValue);
 
       expect(firstDivEl.nativeElement.classList).toContain('positive');
       expect(firstDivEl.nativeElement.classList).not.toContain('negative');

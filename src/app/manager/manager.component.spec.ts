@@ -4,7 +4,9 @@ import { ManagerComponent } from './manager.component';
 import { BorderComponent } from '../border/border.component';
 import { ValueComponent } from '../value/value.component';
 import { NgReduxModule } from '@angular-redux/store';
-import { PositivityPipe } from '../border/positivity.pipe';
+import { SignPipe } from '../border/sign.pipe';
+import { Observable } from 'rxjs';
+import { By } from '@angular/platform-browser';
 
 describe('ManagerComponent', () => {
   let component: ManagerComponent;
@@ -16,7 +18,7 @@ describe('ManagerComponent', () => {
         ManagerComponent,
         BorderComponent,
         ValueComponent,
-        PositivityPipe,
+        SignPipe,
       ],
       imports: [
         NgReduxModule,
@@ -31,7 +33,10 @@ describe('ManagerComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should create component', () => {
     expect(component).toBeTruthy();
   });
+
+ 
+
 });

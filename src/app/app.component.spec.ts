@@ -6,7 +6,7 @@ import { BorderComponent } from './border/border.component';
 import { ValueComponent } from './value/value.component';
 import { NgReduxModule } from '@angular-redux/store';
 import { AppRoutingModule } from './app-routing.module';
-import { PositivityPipe } from './border/positivity.pipe';
+import { SignPipe } from './border/sign.pipe';
 
 describe('AppComponent', () => {
 
@@ -25,7 +25,7 @@ describe('AppComponent', () => {
         BorderComponent,
         ValueComponent,
         ManagerComponent,
-        PositivityPipe,
+        SignPipe,
       ],
     }).compileComponents();
   }));
@@ -35,7 +35,6 @@ describe('AppComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-
 
   it('should create the app', () => {
     const app = fixture.debugElement.componentInstance;

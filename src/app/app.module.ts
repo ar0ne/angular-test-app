@@ -8,7 +8,7 @@ import { AppComponent } from './app.component';
 import { BorderComponent } from './border/border.component';
 import { ValueComponent } from './value/value.component';
 import { ManagerComponent } from './manager/manager.component';
-import { PositivityPipe } from './border/positivity.pipe';
+import { SignPipe } from './border/sign.pipe';
 
 @NgModule({
   declarations: [
@@ -16,7 +16,7 @@ import { PositivityPipe } from './border/positivity.pipe';
     BorderComponent,
     ValueComponent,
     ManagerComponent,
-    PositivityPipe,
+    SignPipe,
   ],
   imports: [
     BrowserModule,
