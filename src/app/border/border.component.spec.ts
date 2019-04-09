@@ -10,6 +10,8 @@ import { SignPipe } from './sign.pipe';
 describe('BorderComponent', () => {
   let component: BorderComponent;
   let fixture: ComponentFixture<BorderComponent>;
+  const getFirst = () => fixture.debugElement.query(By.css('#first'));
+  const getSecond = () => fixture.debugElement.query(By.css('#second'));
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -38,17 +40,13 @@ describe('BorderComponent', () => {
   });
 
   it(`should display default empty values`, () => {
-    const firstDivEl = fixture.debugElement.query(By.css('#first'));
-    const secondDivEl = fixture.debugElement.query(By.css('#second'));
-    
-    expect(firstDivEl.nativeElement.textContent.trim()).toBe("First value:");
-    expect(secondDivEl.nativeElement.textContent.trim()).toBe("Second value:");
+    expect(getFirst().nativeElement.textContent.trim()).toBe("First value:");
+    expect(getSecond().nativeElement.textContent.trim()).toBe("Second value:");
   });
 
   it(`should display updated values`, () => {
-    fixture.detectChanges();
-    const firstDivEl = fixture.debugElement.query(By.css('#first'));
-    const secondDivEl = fixture.debugElement.query(By.css('#second'));
+    const firstDivEl = getFirst();
+    const secondDivEl = getSecond();
     const firstValue = 99;
     const secondValue = -232;
 
@@ -64,6 +62,28 @@ describe('BorderComponent', () => {
       expect(firstDivEl.nativeElement.classList).not.toContain('negative');
 
       expect(secondDivEl.nativeElement.classList).toContain('negative');
+      expect(secondDivEl.nativeElement.classList).not.toContain('positive');
+    });
+  });
+
+  it(`should display not signed values`, () => {
+    const firstDivEl = getFirst();
+    const secondDivEl = getSecond();
+    const firstValue = 0;
+    const secondValue = 0;
+
+    component.first = new Observable(ob => {ob.next(firstValue)});
+    component.second = new Observable(ob => {ob.next(secondValue)});
+
+    fixture.whenStable().then(() => {
+      fixture.detectChanges();
+      expect(firstDivEl.nativeElement.textContent.trim()).toContain(firstValue);
+      expect(secondDivEl.nativeElement.textContent.trim()).toContain(secondValue);
+
+      expect(firstDivEl.nativeElement.classList).not.toContain('positive');
+      expect(firstDivEl.nativeElement.classList).not.toContain('negative');
+
+      expect(secondDivEl.nativeElement.classList).not.toContain('negative');
       expect(secondDivEl.nativeElement.classList).not.toContain('positive');
     });
   });

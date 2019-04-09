@@ -12,7 +12,6 @@ import { timer, Subscription, Observable } from 'rxjs';
 
 export class ManagerComponent implements OnInit, OnDestroy  {
 
-  private readonly sourceTimer: Observable<number> = timer(1000, 1000);
   private timerSubsriber: Subscription;
 
   @select() 
@@ -52,7 +51,8 @@ export class ManagerComponent implements OnInit, OnDestroy  {
   }
 
   private startTimer(): void {
-    this.timerSubsriber = this.sourceTimer.subscribe(() => {
+    let sourceTimer: Observable<number> = timer(1000, 1000);
+    this.timerSubsriber = sourceTimer.subscribe(() => {
       this.ngRedux.dispatch({
         type: INCREASE
       });
