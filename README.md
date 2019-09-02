@@ -1,4 +1,5 @@
-Angular 7 App
+### Angular 7 App
+
 You need to create angular 7 application with next requirements:
 
 Implementation should be provided with git history starting from angular boilerplate as initial commit.
@@ -28,3 +29,9 @@ bonus task: reset button.
 bonus task: don't use setTimeout / setInterval.
 
 Good luck!
+
+
+### Result
+
+[Check it out!](https://ar0ne.github.io/angular-test-app/)
+
