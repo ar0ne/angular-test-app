@@ -5,12 +5,12 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --prod --base-href 'https://ar0ne.github.io/angular-test-app/'",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist/angular-test-app"
+    "deploy": "ngh -d dist/angular-test-app/"
   },
   "private": true,
   "dependencies": {
