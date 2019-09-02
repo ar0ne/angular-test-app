@@ -1,13 +1,16 @@
 {
   "name": "angular-test-app",
   "version": "0.0.0",
+  "homepage": "https://ar0ne.github.io/angular-test-app",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist/angular-test-app"
   },
   "private": true,
   "dependencies": {
@@ -45,6 +48,7 @@
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
     "tslint": "~5.11.0",
-    "typescript": "~3.2.2"
+    "typescript": "~3.2.2",
+    "gh-pages": "^2.1.1"
   }
 }
